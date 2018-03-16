@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import Button from './components/Button';
+import Search from './components/Search';
+import Table from './components/Table';
+
 const DEFAULT_QUERY = 'React';
 const DEFAULT_HPP = '100';
 
@@ -98,56 +102,6 @@ class App extends Component {
       </div>
     );
   }
-}
-
-function Search(props) {
-  const {children, onChange, value, onSubmit} = props;
-  return (
-    <form onSubmit={onSubmit}>
-      <input 
-        onChange={onChange}
-        type="text" 
-        value = {value}
-        placeholder="search"/>
-      <button type="submit">
-        {children}
-      </button>
-    </form>
-  )
-}
-
-function Table(props) {
-  const {list, onDismiss} = props;
-  return (
-    <div className="table">
-    {list.map(item => (
-      <div key={item.objectID} className="table-row">
-        <span style={{width: '40%'}}>
-          <a href={item.url} target="_blank">{item.title}</a>
-        </span>
-        <span style={{width: '30%'}}>{item.author}</span>
-        <span style={{width: '10%'}}>{item.num_comments}</span>
-        <span style={{width: '10%'}}>{item.points}</span>
-        <span style={{width: '10%'}}>
-          <Button
-            onClick={() => onDismiss(item.objectID)}
-            className="button-inline"
-          >
-            Dismiss
-          </Button>
-        </span>
-      </div>
-    )
-    )}
-    </div>
-  )
-}
-
-function Button(props) {
-  const {onClick, className, children} = props;
-  return (
-    <button onClick={onClick} type='button' className={className}>{children}</button>
-  )
 }
 
 export default App;
