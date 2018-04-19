@@ -5,14 +5,15 @@ import Button from './components/Button';
 import Search from './components/Search';
 import Table from './components/Table';
 
-const DEFAULT_QUERY = 'React';
-const DEFAULT_HPP = '100';
-
-const PATH_BASE = 'https://hn.algolia.com/api/v1';
-const PATH_SEARCH = '/search';
-const PARAM_SEARCH = 'query=';
-const PARAM_PAGE= 'page=';
-const PARAM_HPP = 'hitsPerPage=';
+import {
+  DEFAULT_QUERY,
+  DEFAULT_HPP,
+  PATH_BASE,
+  PATH_SEARCH,
+  PARAM_SEARCH,
+  PARAM_PAGE,
+  PARAM_HPP
+} from './utils/params';
 
 class App extends Component {
   constructor(props) {
@@ -79,7 +80,7 @@ class App extends Component {
     return (
       <div className="page">
         <div className="interactions">
-          <Search 
+          <Search
             onChange={this.onSearchChange}
             value={searchTerm}
             onSubmit={this.onSearchSubmit}
@@ -88,7 +89,7 @@ class App extends Component {
           </Search>
         </div>
         {result
-         ? <Table 
+         ? <Table
             list={result.hits}
             onDismiss={this.onDismiss}
           />
